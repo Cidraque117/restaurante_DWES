@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurante DWES{% endblock %}
+
+{% block body %}
+    <style>
+        /* Estilo para el contenedor principal */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header */
+        header {
+            background-color: #6d87c6;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Contenedor de enlaces */
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 800px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+            text-align: center;
+        }
+
+        .example-wrapper h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        .example-wrapper p {
+            margin: 1em 0;
+        }
+
+        /* Contenedor de enlaces */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #6d87c6;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="example-wrapper">
+        <h2>Bienvenido al Restaurante DWES</h2>
+
+        <p>En el restaurante DWES podrás encontrar un espacio para ti y tus componentes favoritos
+            dentro de contenedores personalizados en los que disfrutarás con la más absoluta privacidad.</p>
+
+        <!-- Contenedor de enlaces -->
+        <div class="links-container">
+            <a href="#">Registro</a>
+            <a href="#">Logueo</a>
+            <a href="#">Administración de usuarios</a>
+            <a href="#">Administración de reservas</a>
+            <a href="#">Perfil de Usuario</a>
+            <a href="#">Reservar</a>
+            <a href="#">Carta</a>
+            <a href="#">Encuéntranos</a>
+            <a href="#">Quienes somos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Restaurante DWES. Todos los derechos reservados.</p>
+    </footer>
+
+{% endblock %}
