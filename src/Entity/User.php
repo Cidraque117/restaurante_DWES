@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[ORM\Table(name: 'Usuario')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -16,29 +19,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(name: 'email',length: 180, unique: true)]
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
-    #[ORM\Column]
+    #[ORM\Column(name: 'rol')]
     private array $roles = [];
 
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(name: 'contrasenya')]
     private ?string $password = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $Nombre = null;
+    #[ORM\Column(name: 'nombre',length: 50)]
+    private ?string $nombre = null;
 
-    #[ORM\Column(length: 180)]
-    private ?string $Apellidos = null;
+    #[ORM\Column(name: 'apellidos',length: 180)]
+    private ?string $apellidos = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Email = null;
+    #[ORM\Column(length: 12)]
+    private ?string $telefono = null;
+
+    /**
+     * @var Collection<int, Reserva>
+     */
+    #[ORM\OneToMany(targetEntity: Reserva::class, mappedBy: 'usuario')]
+    private Collection $reservas;
+
+    public function __construct()
+    {
+        $this->reservas = new ArrayCollection();
+    }
+    
 
     public function getId(): ?int
     {
@@ -117,24 +132,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getNombre(): ?string
     {
-        return $this->Nombre;
+        return $this->nombre;
     }
 
-    public function setNombre(string $Nombre): static
+    public function setNombre(string $nombre): static
     {
-        $this->Nombre = $Nombre;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     public function getApellidos(): ?string
     {
-        return $this->Apellidos;
+        return $this->apellidos;
     }
 
-    public function setApellidos(string $Apellidos): static
+    public function setApellidos(string $apellidos): static
     {
-        $this->Apellidos = $Apellidos;
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(string $telefono): static
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reserva>
+     */
+    public function getReservas(): Collection
+    {
+        return $this->reservas;
+    }
+
+    public function addReserva(Reserva $reserva): static
+    {
+        if (!$this->reservas->contains($reserva)) {
+            $this->reservas->add($reserva);
+            $reserva->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReserva(Reserva $reserva): static
+    {
+        if ($this->reservas->removeElement($reserva)) {
+            // set the owning side to null (unless already changed)
+            if ($reserva->getUsuario() === $this) {
+                $reserva->setUsuario(null);
+            }
+        }
 
         return $this;
     }
