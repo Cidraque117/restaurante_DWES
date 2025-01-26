@@ -26,7 +26,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add(
+                'plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -43,6 +44,9 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add(child: 'nombre')
+            ->add(child: 'apellidos')
+            ->add(child: 'telefono')
         ;
     }
 
