@@ -22,7 +22,7 @@ final class ReservaController extends AbstractController
         ]);
     }
 
-    #[Route('/reservas/new', name: 'app_reserva_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_reserva_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $reserva = new Reserva();
