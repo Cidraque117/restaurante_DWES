@@ -3,18 +3,122 @@
 {% block title %}Encuéntranos{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/www/html/restaurante_dwes/src/Controller/EncuentraController.php</code></li>
-        <li>Your template at <code>/www/html/restaurante_dwes/templates/encuentra/index.html.twig</code></li>
-    </ul>
-</div>
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        .links-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        .map-container {
+            margin: 20px auto;
+            max-width: 1000px;
+            width: 95%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .location-info {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .location-info a {
+            color: #3b61c8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .location-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <!-- Mapa de Google Maps -->
+    <div class="map-container">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3252.6724309904075!2d-0.3169105079895777!3d39.516691104933756!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1738021022246!5m2!1ses!2ses"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- Información de ubicación -->
+    <div class="location-info">
+        Playa de Meliana S/N, Aparcamiento gratuito.
+        <a href="https://maps.app.goo.gl/iHVeUR2ajQCyuwMs6" target="_blank">RESTAURANTE DWES</a>
+    </div>
+
+    <!-- Botón de Inicio -->
+    <div class="links-container">
+        <a href="{{ path('app_main') }}" class="btn">Inicio</a>
+    </div>
 {% endblock %}
