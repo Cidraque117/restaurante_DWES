@@ -82,6 +82,14 @@
             width: 100%;
             bottom: 0;
         }
+        #user{
+            color: #0042ff;
+        }
+
+        #admin{
+            border: solid 3px #6d87c6;
+
+        }
 
         footer p {
             margin: 0;
@@ -101,15 +109,25 @@
 
         <!-- Contenedor de enlaces -->
         <div class="links-container">
-            <a href={{ path('app_register') }}>Registro</a>
-            <a href={{ path('app_login') }}>Logueo</a>
-            <a href={{ path('app_user_index') }}>Administración de usuarios</a>
-            <a href={{ path('app_reserva_index') }}>Administración de reservas</a>
-            <a href={{ path('app_user_profile') }}>Perfil de Usuario</a>
-            <a href={{ path('app_reserva_new') }}>Reservar</a>
-            <a href={{ path('app_carta') }}>Carta</a>
-            <a href={{ path('app_encuentra') }}>Encuéntranos</a>
-            <a href={{ path('app_quienes') }}>Quienes somos</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <p id="user">¡Hola {{ app.user.nombre }}!</p>
+                <a href={{ path('app_logout') }}>Desconectar</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a id="admin" href={{ path('app_user_index') }}>Administración de usuarios</a>
+                    <a id="admin" href={{ path('app_reserva_index') }}>Administración de reservas</a>
+                {% else %}
+                    <a href={{ path('app_user_profile') }}>Perfil de Usuario</a>
+                    <a href={{ path('app_reserva_new') }}>Reservar</a>
+                {% endif %}
+
+            {% else %}
+                <a href={{ path('app_login') }}>Logueo</a>
+                <a href={{ path('app_register') }}>Registro</a>
+            {% endif %}
+                <a href={{ path('app_carta') }}>Carta</a>
+                <a href={{ path('app_encuentra') }}>Encuéntranos</a>
+                <a href={{ path('app_quienes') }}>Quienes somos</a>
+
         </div>
     </div>
 
