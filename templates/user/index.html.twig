@@ -3,43 +3,140 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    <table class="table">
-        <thead>
+
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 1000px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+            text-align: center; /* Centrado de contenido */
+        }
+
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto; /* Centrado de la tabla */
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .table a {
+            padding: 6px 12px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .table a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+
+        .links-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+    </style>
+
+    <header>
+        <h1>Bienvenido al Restaurante DWES</h1>
+    </header>
+
+    <div class="example-wrapper">
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
+                <th>Email</th>
+                <th>Roles</th>
                 <th>Telefono</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.nombre }}</td>
-                <td>{{ user.apellidos }}</td>
-                <td>{{ user.telefono }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.apellidos }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.telefono }}</td>
+                    <td>
+                        <a href="{{ path('app_user_edit', {'id': user.id}) }}">Editar</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+        <div class="links-container">
+            <a href="{{ path('app_user_new') }}">Crear nuevo usuario</a>
+            <a href="{{ path('app_main') }}">Inicio</a>
+        </div>
+    </div>
+
 {% endblock %}
