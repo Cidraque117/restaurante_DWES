@@ -66,6 +66,22 @@ final class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }#[Route('/{id}/edit2', name: 'app_user_edit2', methods: ['GET', 'POST'])]
+    public function edit2(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_show', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/edit2.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
