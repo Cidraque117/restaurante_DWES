@@ -3,9 +3,110 @@
 {% block title %}Accede!{% endblock %}
 
 {% block body %}
-    <form method="post">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 800px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        .btn-primary:hover {
+            background-color: #28a745;
+            color:white;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="example-wrapper">
         {% if error %}
-           <p style="color: red">¡Credenciales Inválidas!</p>
+            <p style="color: red">¡Credenciales Inválidas!</p>
         {% endif %}
 
         {% if app.user %}
@@ -14,29 +115,27 @@
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Por favor logueate</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Contraseña</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+        <h1 class="h3 mb-3 font-weight-normal">Por favor, inicia sesión</h1>
 
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
             </div>
-        #}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Accede
-        </button>
-    </form>
-        <a href={{ path('app_main') }}>Inicio</a>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn btn-primary" type="submit">Accede</button>
+        </form>
+
+        <div class="links-container">
+            <a href="{{ path('app_main') }}">Inicio</a>
+        </div>
+    </div>
+
 {% endblock %}

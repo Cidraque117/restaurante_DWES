@@ -1,20 +1,228 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartaController!{% endblock %}
+{% block title %}Carta{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/www/html/restaurante_dwes/src/Controller/CartaController.php</code></li>
-        <li>Your template at <code>/www/html/restaurante_dwes/templates/carta/index.html.twig</code></li>
-    </ul>
-</div>
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .menu-container {
+            margin: 2em auto;
+            max-width: 1000px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+        }
+
+        .menu-section {
+            margin-bottom: 30px;
+        }
+
+        .menu-section h2 {
+            color: #3b61c8;
+            border-bottom: 2px solid #3b61c8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .menu-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .menu-item .price {
+            color: #3b61c8;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #3b61c8;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .links-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 25px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="menu-container">
+        <!-- Sección de Entradas -->
+        <div class="menu-section">
+            <h2>Entradas</h2>
+            <div class="menu-item">
+                <div>
+                    <h3>Ensalada César</h3>
+                    <p>Lechuga romana, croutones, queso parmesano y aderezo César.</p>
+                </div>
+                <div class="price">€7.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Bruschetta</h3>
+                    <p>Pan tostado con tomate, albahaca y aceite de oliva.</p>
+                </div>
+                <div class="price">€5.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Sopa del Día</h3>
+                    <p>Sopa casera preparada diariamente con ingredientes frescos.</p>
+                </div>
+                <div class="price">€6.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Empanadas</h3>
+                    <p>Empanadas de carne o pollo, horneadas y servidas con salsa chimichurri.</p>
+                </div>
+                <div class="price">€8.50</div>
+            </div>
+        </div>
+
+        <!-- Sección de Platos Principales -->
+        <div class="menu-section">
+            <h2>Platos Principales</h2>
+            <div class="menu-item">
+                <div>
+                    <h3>Filete de Salmón</h3>
+                    <p>Salmón a la parrilla con vegetales frescos y arroz.</p>
+                </div>
+                <div class="price">€13.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Pasta Alfredo</h3>
+                    <p>Pasta con salsa Alfredo casera y pollo a la parrilla.</p>
+                </div>
+                <div class="price">€10.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Lomo de Res</h3>
+                    <p>Lomo de res a la parrilla con puré de papas y espárragos.</p>
+                </div>
+                <div class="price">€16.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Pizza Margarita</h3>
+                    <p>Pizza clásica con tomate, mozzarella y albahaca fresca.</p>
+                </div>
+                <div class="price">€9.50</div>
+            </div>
+        </div>
+
+        <!-- Sección de Postres -->
+        <div class="menu-section">
+            <h2>Postres</h2>
+            <div class="menu-item">
+                <div>
+                    <h3>Tiramisú</h3>
+                    <p>El clásico postre italiano con café y cacao.</p>
+                </div>
+                <div class="price">€4.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Cheesecake</h3>
+                    <p>Cheesecake de fresa con base de galleta.</p>
+                </div>
+                <div class="price">€5.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Flan de Vainilla</h3>
+                    <p>Flan casero con caramelo y vainilla.</p>
+                </div>
+                <div class="price">€3.50</div>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <h3>Brownie con Helado</h3>
+                    <p>Brownie de chocolate con helado de vainilla.</p>
+                </div>
+                <div class="price">€6.50</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de Inicio -->
+    <div class="links-container">
+        <a href="{{ path('app_main') }}" class="btn">Inicio</a>
+    </div>
 {% endblock %}

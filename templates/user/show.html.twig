@@ -94,7 +94,7 @@
     </style>
 
     <header>
-        <h1>Bienvenido al Restaurante DWES</h1>
+        <h1>Restaurante DWES</h1>
     </header>
 
     <div class="example-wrapper">
@@ -111,6 +111,9 @@
             <tr>
                 <th>Email</th>
                 <td>{{ app.user.email }}</td>
+            </tr><tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
                 <th>Teléfono</th>

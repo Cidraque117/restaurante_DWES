@@ -1,28 +1,136 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    <h1>Registro</h1>
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    {{ form_errors(registrationForm) }}
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-    {{ form_start(registrationForm) }}
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 800px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+            text-align: center;
+        }
 
-    {{ form_row(registrationForm.nombre) }}
-    {{ form_row(registrationForm.apellidos) }}
-    {{ form_row(registrationForm.telefono, { label: 'Teléfono' }) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, { label: 'Contraseña' }) }}
-    {{ form_row(registrationForm.agreeTerms) }}
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
-    <button type="submit" class="btn">Registro</button>
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-    {{ form_end(registrationForm) }}
-    <a href={{ path('app_main') }}>Inicio</a>
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #3b61c8;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6d87c6;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 12px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="example-wrapper">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+
+        <div class="form-group">
+            {{ form_row(registrationForm.nombre) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.apellidos) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.telefono, { label: 'Teléfono' }) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.plainPassword, { label: 'Contraseña' }) }}
+        </div>
+
+            {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Registro</button>
+
+        {{ form_end(registrationForm) }}
+
+        <div class="links-container">
+            <a href="{{ path('app_main') }}">Inicio</a>
+        </div>
+    </div>
 
 {% endblock %}
