@@ -26,6 +26,9 @@ final class ReservaController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $reserva = new Reserva();
+
+        $usuario = $this->getUser();
+        $reserva->setUsuario($usuario);
         $form = $this->createForm(ReservaType::class, $reserva);
         $form->handleRequest($request);
 
@@ -33,7 +36,7 @@ final class ReservaController extends AbstractController
             $entityManager->persist($reserva);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_reserva_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_reserva_show', ['id' => $reserva->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reserva/new.html.twig', [
@@ -76,6 +79,6 @@ final class ReservaController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_reserva_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
     }
 }

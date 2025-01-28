@@ -3,18 +3,90 @@
 {% block title %}Quienes somos{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/www/html/restaurante_dwes/src/Controller/QuienesController.php</code></li>
-        <li>Your template at <code>/www/html/restaurante_dwes/templates/quienes/index.html.twig</code></li>
-    </ul>
-</div>
+        /* Header */
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Contenedor de enlaces */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #nosotros{
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        #text{
+            font-size: 18px;
+        }
+
+        .links-container a {
+            padding: 12px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="flex-container">
+        <h2 id="nosotros">Sobre nosotros</h2>
+        <div id="text">
+            <p>En restaurante DWES nos hemos reunido un grupo de programadores frustrados con nuestros proyectos</p>
+            <p>Como objetivo te tenemos a ti y a tu frustración, queremos que te frustres con nosotros</p>
+            <p>Para ello hemos seleccionado los ambientes y los platos más selectos para que puedas sentirte igual de jodido que nosotros</p>
+            <p>Que lo disfrutes...</p>
+        </div>
+        <div class="links-container">
+            <a href={{ path('app_main') }}>Inicio</a>
+        </div>
+    </div>
+
 {% endblock %}

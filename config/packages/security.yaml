@@ -35,14 +35,11 @@ security:
     # Note: Only the *first* access control that matches will be used
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/user$, roles: ROLE_ADMIN }
-        - { path: ^/user/profile$, roles: ROLE_USER }
-        - { path: ^/reservas/new$, roles: ROLE_USER }
+        - { path: ^/user/profile, roles: ROLE_USER }
+        - { path: ^/user, roles: ROLE_ADMIN }
+        - { path: ^/reservas/(new|\d+|delete), roles: ROLE_USER }
         - { path: ^/reservas, roles: ROLE_ADMIN }
-        - { path: ^/registro$, roles: PUBLIC_ACCESS }
-        - { path: ^/login$, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+
 
     role_hierarchy:
         ROLE_USER: []

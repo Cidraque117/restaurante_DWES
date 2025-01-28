@@ -14,15 +14,13 @@ class ReservaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('comensales')
             ->add('fecha', null, [
                 'widget' => 'single_text',
+                'attr' => ['class' => 'form-input'],
             ])
-            ->add('usuario', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
-        ;
+            ->add('comensales', null, [
+                'attr' => ['class' => 'form-input2'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
