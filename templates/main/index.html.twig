@@ -116,9 +116,10 @@
                     <a id="admin" href={{ path('app_user_index') }}>Administración de usuarios</a>
                     <a id="admin" href={{ path('app_reserva_index') }}>Administración de reservas</a>
                 {% else %}
-                    <a href={{ path('app_reserva_new') }}>Reservar</a>
+                    {#<a href={{ path('app_reserva_new') }}>Reservar</a>#}
                 {% endif %}
                     <a href={{ path('app_user_show') }}>Perfil de Usuario</a>
+                    <a href={{ path('app_reserva_new') }}>Reservar</a>
 
             {% else %}
                 <a href={{ path('app_login') }}>Logueo</a>

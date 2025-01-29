@@ -3,11 +3,113 @@
 {% block title %}Editar Reserva{% endblock %}
 
 {% block body %}
-    <h1>Edit Reserva</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
 
-    {{ include('reserva/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_reserva_index') }}">back to list</a>
+    header {
+        background-color: #3b61c8;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
 
-    {{ include('reserva/_delete_form.html.twig') }}
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        align-content:center ;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .links-container a {
+        padding: 12px 20px;
+        background-color: #f0f0f0;
+        color: #333;
+        text-decoration: none;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .links-container a:hover {
+        background-color: #6d87c6;
+        border-color: #ffffff;
+        color: white;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        background-color: #f0f0f0;
+        color: #333;
+        text-decoration: none;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+
+    .btn:hover {
+        background-color: #6d87c6;
+        border-color: #ffffff;
+        color: white;
+    }
+
+    .btn-danger:hover{
+        background-color: #df2929;
+        color: white;
+    }
+    .form-input {
+        margin-bottom: 20px;
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }.form-input2 {
+         margin-bottom: 20px;
+         width: 10%;
+         padding: 5px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         font-size: 16px;
+     }
+     </style>
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="flex-container">
+        <h1>Editar Reserva de {{ reserva.usuario.nombre }}</h1>
+        <div class="links-container">
+
+            {{ include('reserva/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+            <a href="{{ path('app_reserva_index') }}">Volver a la lista</a>
+
+           {{ include('reserva/_delete_form.html.twig') }}
+        </div>
+    </div>
+
 {% endblock %}

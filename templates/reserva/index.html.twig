@@ -3,36 +3,150 @@
 {% block title %}Admin Reservas{% endblock %}
 
 {% block body %}
-    <h1>Reserva index</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    <table class="table">
-        <thead>
+        header {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .example-wrapper {
+            margin: 2em auto;
+            max-width: 1000px;
+            width: 95%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font: 18px/1.5 sans-serif;
+            text-align: center;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .table a {
+            padding: 6px 12px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .table a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        .links-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .links-container a {
+            padding: 7px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .links-container a:hover {
+            background-color: #6d87c6;
+            border-color: #ffffff;
+            color: white;
+        }
+        .btn {
+            padding:10px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            font-size: 18px;
+
+        }
+
+        .btn:hover {
+            background-color: #dd3c3c;
+            border-color: #ffffff;
+            color: white;
+        }
+    </style>
+
+    <header>
+        <h1>Restaurante DWES</h1>
+    </header>
+
+    <div class="example-wrapper">
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
+                <th>Nº de Reserva</th>
+                <th>Usuario</th>
+                <th>Fecha y hora reserva</th>
                 <th>Comensales</th>
-                <th>Fecha</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for reserva in reservas %}
-            <tr>
-                <td>{{ reserva.id }}</td>
-                <td>{{ reserva.comensales }}</td>
-                <td>{{ reserva.fecha ? reserva.fecha|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_reserva_show', {'id': reserva.id}) }}">show</a>
-                    <a href="{{ path('app_reserva_edit', {'id': reserva.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.usuario.nombre }}</td>
+                    <td>{{ reserva.fecha ? reserva.fecha|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ reserva.comensales }}</td>
+                    <td class="links-container">
+                        <a href="{{ path('app_reserva_show', {'id': reserva.id}) }}">Mostrar</a>
+                        <a href="{{ path('app_reserva_edit', {'id': reserva.id}) }}">Editar</a>
+                        {{ include('reserva/_delete_form.html.twig', { button_label: 'Eliminar' }) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_reserva_new') }}">Create new</a>
-    <a href={{ path('app_main') }}>Inicio</a>
+        <div class="links-container">
+            <a href="{{ path('app_main') }}">Inicio</a>
+        </div>
+    </div>
 {% endblock %}

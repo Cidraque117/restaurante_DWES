@@ -36,6 +36,7 @@ security:
 
     access_control:
         - { path: ^/user/profile, roles: ROLE_USER }
+        - { path: ^/user/\d+/edit2, roles: ROLE_USER }
         - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/reservas/(new|\d+|delete), roles: ROLE_USER }
         - { path: ^/reservas, roles: ROLE_ADMIN }
