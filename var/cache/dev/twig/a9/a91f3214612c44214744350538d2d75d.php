@@ -174,6 +174,35 @@ class __TwigTemplate_05efe9c8d561d7955e2d8cf7e0438f7a extends Template
             border: solid 3px #6d87c6;
 
         }
+        footer {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.5s ease-out;
+        }
+
+
+
+        footer a:hover {
+            padding: 5px 15px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
 
     </style>
 
@@ -191,70 +220,73 @@ class __TwigTemplate_05efe9c8d561d7955e2d8cf7e0438f7a extends Template
         <!-- Contenedor de enlaces -->
         <div class=\"links-container\">
             ";
-        // line 99
+        // line 128
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 100
+            // line 129
             yield "                <p id=\"user\">¡Hola ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 100, $this->source); })()), "user", [], "any", false, false, false, 100), "nombre", [], "any", false, false, false, 100), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 129, $this->source); })()), "user", [], "any", false, false, false, 129), "nombre", [], "any", false, false, false, 129), "html", null, true);
             yield "!</p>
                 <a href=";
-            // line 101
+            // line 130
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             yield ">Desconectar</a>
                 ";
-            // line 102
+            // line 131
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-                // line 103
+                // line 132
                 yield "                    <a id=\"admin\" href=";
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
                 yield ">Administración de usuarios</a>
                     <a id=\"admin\" href=";
-                // line 104
+                // line 133
                 yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reserva_index");
                 yield ">Administración de reservas</a>
                 ";
             } else {
-                // line 106
+                // line 135
                 yield "                    ";
-                // line 107
+                // line 136
                 yield "                ";
             }
-            // line 108
+            // line 137
             yield "                    <a href=";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_show");
             yield ">Perfil de Usuario</a>
                     <a href=";
-            // line 109
+            // line 138
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reserva_new");
             yield ">Reservar</a>
 
             ";
         } else {
-            // line 112
+            // line 141
             yield "                <a href=";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield ">Logueo</a>
                 <a href=";
-            // line 113
+            // line 142
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield ">Registro</a>
             ";
         }
-        // line 115
+        // line 144
         yield "                <a href=";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_carta");
         yield ">Carta</a>
                 <a href=";
-        // line 116
+        // line 145
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_encuentra");
         yield ">Encuéntranos</a>
                 <a href=";
-        // line 117
+        // line 146
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_quienes");
         yield ">Quienes somos</a>
 
         </div>
     </div>
+    <footer>
+        <p>&copy; 2025 Restaurante DWES. Todos los derechos reservados.</p>
+    </footer>
 
 ";
         
@@ -287,7 +319,7 @@ class __TwigTemplate_05efe9c8d561d7955e2d8cf7e0438f7a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  253 => 117,  249 => 116,  244 => 115,  239 => 113,  234 => 112,  228 => 109,  223 => 108,  220 => 107,  218 => 106,  213 => 104,  208 => 103,  206 => 102,  202 => 101,  197 => 100,  195 => 99,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  282 => 146,  278 => 145,  273 => 144,  268 => 142,  263 => 141,  257 => 138,  252 => 137,  249 => 136,  247 => 135,  242 => 133,  237 => 132,  235 => 131,  231 => 130,  226 => 129,  224 => 128,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -374,6 +406,35 @@ class __TwigTemplate_05efe9c8d561d7955e2d8cf7e0438f7a extends Template
             border: solid 3px #6d87c6;
 
         }
+        footer {
+            background-color: #3b61c8;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.5s ease-out;
+        }
+
+
+
+        footer a:hover {
+            padding: 5px 15px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
 
     </style>
 
@@ -412,6 +473,9 @@ class __TwigTemplate_05efe9c8d561d7955e2d8cf7e0438f7a extends Template
 
         </div>
     </div>
+    <footer>
+        <p>&copy; 2025 Restaurante DWES. Todos los derechos reservados.</p>
+    </footer>
 
 {% endblock %}
 ", "main/index.html.twig", "/www/html/restaurante_dwes/templates/main/index.html.twig");

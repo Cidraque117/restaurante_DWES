@@ -782,3 +782,9 @@ a36090,127.0.0.1,GET,http://localhost:8030/user,1738621963,,200,request
 12181e,127.0.0.1,GET,http://localhost:8030/user/13/edit,1738621996,,200,request
 adf795,127.0.0.1,GET,http://localhost:8030/reservas/7/edit,1738622009,,200,request
 310817,127.0.0.1,GET,http://localhost:8030/user/7/edit2,1738622023,,200,request
+001494,127.0.0.1,GET,http://localhost:8030/,1738624187,,200,request
+ac381e,127.0.0.1,GET,http://localhost:8030/login,1738624199,,200,request
+8b30c2,127.0.0.1,GET,http://localhost:8030/,1738624507,1c1c4b,500,request
+1c1c4b,127.0.0.1,GET,http://localhost:8030/,1738624508,,500,request
+800f2e,127.0.0.1,GET,http://localhost:8030/,1738624533,,200,request
+499aa3,127.0.0.1,GET,http://localhost:8030/login,1738624548,,200,request
