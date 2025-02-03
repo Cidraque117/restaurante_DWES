@@ -93,7 +93,10 @@
         {{ include('user/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
         <div class="links-container">
-            <a href="{{ path('app_user_show') }}" class="btn">Volver </a>
+            <div>
+                <a href="{{ path('app_user_show') }}" class="btn">Volver </a>
+                <a href="{{ path('app_main') }}" class="btn">Inicio</a>
+            </div>
             <div class="btn-container">
                 <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('¿Estás seguro de que deseas eliminar el usuario {{ user.nombre }}?');">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
